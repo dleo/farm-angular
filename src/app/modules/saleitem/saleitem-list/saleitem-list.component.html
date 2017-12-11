@@ -1,0 +1,35 @@
+<div class="box box-primary box-solid">
+    <div class="box-header with-border">
+        <h3 class="box-title">Items Ventas</h3>
+        <button
+            class="btn btn-info pull-right"
+            type="submit"
+            (click)="goToSaveItem()" ><span class="glyphicon glyphicon-plus"></span></button>
+    </div>
+
+    <div class="box-body">
+        <ngx-datatable
+            #table
+            class='material'
+            [columns]="columns"
+            [columnMode]="'force'"
+            [headerHeight]="95"
+            [footerHeight]="50"
+            [rowHeight]="'auto'"
+            [limit]="25"
+            [rows]='tableData'
+            [sorts]="[{prop:'id', dir: 'asc'}]"
+        >
+            <ngx-datatable-column  *ngFor="let column of columns" [name]="column.name">
+                <ng-template let-column="column" ngx-datatable-header-template>
+                    <span><h3>{{column.name}}</h3></span>
+                    <input
+                        type='text'
+                        class="input-mini"
+                        (keyup)="updateFilter($event, column.prop)"
+                    />
+                </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable>
+    </div>
+</div>
