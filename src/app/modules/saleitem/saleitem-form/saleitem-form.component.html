@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="box box-primary box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Crear un Item de Venta</h3>
+            </div>
+
+            <div class="box-body">
+
+                <form [formGroup]="form">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" class="form-control" id="name" formControlName="name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="code">Código</label>
+                        <input type="text" class="form-control" id="code" formControlName="code">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Precio</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control" placeholder="Precio" id="price" formControlName="price">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Presentación</label>
+                        <select
+                            formControlName="presentation" id="presentation"
+                            class="form-control select2 select2-hidden-accessible"
+                            style="width: 100%;" tabindex="-1" aria-hidden="true">
+                            <option selected="selected">KG</option>
+                            <option>LTS</option>
+                            <option>G</option>
+                            <option>mg</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Variedad</label>
+                        <select
+                            class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true"
+                            formControlName="variety_id"
+                            id="variety_id"
+                            [(ngModel)]="saleItem.variety_id">
+                            <option selected="selected" *ngFor="let v of varieties" [value]="v.id">{{v.name}}</option>
+                        </select>
+                    </div>
+
+                </form>
+
+                <div class="box-footer">
+                    <button
+                        (click)="createItem()"
+                        type="button"
+                        class="btn btn-primary pull-right">Crear Item</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
