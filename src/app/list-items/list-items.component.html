@@ -1,0 +1,79 @@
+<div class="row">
+        <div class="col-md-12">
+            <div class="box collapsed-box">
+    
+                <div class="box-header with-border">
+                    <h3 class="box-title">List of items</h3>
+    
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                    
+                <div class="box-body" style="display:none">
+                <div class="row">
+                <div class="col-md-12">
+
+                    <h3 *ngIf="!data" > Loading...</h3>
+
+
+<table 
+    class="table table-striped" 
+    [mfData]="data | dataFilter : filterQuery" 
+    #mf="mfDataTable" 
+    [mfRowsOnPage]="rowsOnPage"
+    [(mfSortBy)]="sortBy"
+    [(mfSortOrder)]="sortOrder">
+    <thead>
+        <tr>
+            <th colspan="5">
+                Filter by name:
+                <input class="form-control" [(ngModel)]="filterQuery"/>
+            </th>
+        </tr>
+        <tr>
+            <th style="width: 15%">
+                <mfDefaultSorter by="name">Name</mfDefaultSorter>
+            </th>
+            <th style="width: 15%">
+                <mfDefaultSorter by="code">Code</mfDefaultSorter>
+            </th>
+            <th style="width: 15%">
+                <mfDefaultSorter by="price">Price</mfDefaultSorter>
+            </th>
+            <th style="width: 25%">
+                <mfDefaultSorter by="presentation">Presentation</mfDefaultSorter>
+            </th>
+            <th style="width: 30%">
+                <mfDefaultSorter by="variety">Variety</mfDefaultSorter>
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let item of mf.data">
+            <td>{{item.name}}</td>
+            <td>{{item.code}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.presentation}}</td>
+            <td>{{item.variety.name}}</td>
+        </tr>
+    </tbody>
+
+    <tfoot>
+        <tr style="text-align: center;">
+            <td colspan="5" >
+                <mfBootstrapPaginator></mfBootstrapPaginator>
+            </td>
+        </tr>
+    </tfoot>
+</table>  
+
+                </div>
+                </div>
+
+    
+            </div>
+        </div>
+    </div>
