@@ -1,0 +1,10 @@
+// The file contents for the current environment will overwrite these during build.
+// The build system defaults to the dev environment which uses `environment.ts`, but if you do
+// `ng build --env=prod` then `environment.prod.ts` will be used instead.
+// The list of which env maps to which file can be found in `.angular-cli.json`.
+
+export const environment = {
+  production: false,
+  API_TOKEN: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjYwNjZhNTdmZjkxOTQyNjVhNTYzMDU4MzAwYmM0ZjY0M2E3Y2EzZjgzOWM2ZWMzMmZjNjQzNzY4ZTU1MjQ3NjkyZjlkZmEyZWJlMTM3ZDY0In0.eyJhdWQiOiIxIiwianRpIjoiNjA2NmE1N2ZmOTE5NDI2NWE1NjMwNTgzMDBiYzRmNjQzYTdjYTNmODM5YzZlYzMyZmM2NDM3NjhlNTUyNDc2OTJmOWRmYTJlYmUxMzdkNjQiLCJpYXQiOjE1MTQ5MzI1NTIsIm5iZiI6MTUxNDkzMjU1MiwiZXhwIjoxNTQ2NDY4NTUyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.bS4trYAqtHNwqc9KsDtG_4l0cGBzQjQsz34fUaS9z4PwyeeyFCvc_L6a_9jg_6ykTjp9PZph0i1mAa1ViIvK6xJYKT-qHotpaoEUxxpLsVOSTPdoFbY5sn6urmx04wzbaTY1yjedrJu3uLgGW-jcY3CoktaKC6XFDyjZJ36SNE53uNxiRTcYPuVKC6EZ5_gIX4af1hYvIoxA8AWCNlzC4AMjzGqIxO1OMcOrOeBOIsgWUVIlDb4V9MMmMaqpd8bUwcdseAt0bmb1GQW-01eL-nmOlt2Nfb9h9kpLLgMEuv28-1CfL0W5vSQhY_RXO8T9b6pqcxz-MmdkxDUCI8hQvQaDLBaFwBRUM49Lh0i5ZPr_jzDbV6ia14DqqxJZUtgvURHldo-0JKKio32oXI5-V40QJQtjxT6HNu0MJkRqts8fWQBrgoXwo87p26A6QT2FqOKZEY4FmW0q65zkSGUerg3kDGutKj3t16sLwifscf0QxaSEgN5KMzPtzE48iV7KvWOIAYWgW75ktArkHLPcKQm8EO9FXnZyZRk-dJ_SgKZRmceTC8zG_z4_dnby2BGG_OwJe-IxU6NcdEkBSREMaKMt-qQd6GXMMHPtoyAMlYzzwaK-7QZaS0_7pGzWQI-pP8tHnvS5tSVux7xZBkKzSxlBrHWQqubQwwiX_ocdsfI',
+  APP_URI_BASE: 'https://stormy-coast-32294.herokuapp.com/api'
+};
