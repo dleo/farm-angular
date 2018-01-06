@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { LocalStorage } from "./models/localstorage";
+import { LocalStorage } from "../shared/models/localStorage";
 import { environment } from '../environments/environment';
 
 @Injectable()

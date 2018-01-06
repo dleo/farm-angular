@@ -9,6 +9,7 @@ import { SalesitemsComponent } from '@app/salesitems/salesitems.component';
 import { LoginComponent } from '@app/login/login.component';
 
 import { AuthGuard } from '../../services/auth-guard.service';
+import { FormComponent } from '../salesitems/form/form.component';
 
 @NgModule({
   imports: [
@@ -26,6 +27,22 @@ import { AuthGuard } from '../../services/auth-guard.service';
           {
             path: 'salesitems',
             component: SalesitemsComponent,
+            canActivate: [AuthGuard]
+          },
+          {
+            path: 'salesitems/new',
+            component: FormComponent,
+            data: {
+              title: 'Nuevo item'
+            },
+            canActivate: [AuthGuard]
+          },
+          {
+            path: 'salesitems/:id/edit',
+            component: FormComponent,
+            data: {
+              title: 'Editar item #'
+            },
             canActivate: [AuthGuard]
           }
         ]

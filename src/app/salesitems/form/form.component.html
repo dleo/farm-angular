@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title">{{title}}</h3>
+      </div>
+      <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSave()" novalidate>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <div class="form-group">
+            <label for="inputName" class="col-sm-3 control-label">Nombre</label>
+            <div class="col-sm-9">
+              <input type="text" [formControl]="form.controls['name']" class="form-control" id="inputName" placeholder="Ingrese un nombre">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputCode" class="col-sm-3 control-label">Código</label>
+            <div class="col-sm-9">
+              <input type="text" [formControl]="form.controls['code']" class="form-control" id="inputCode" placeholder="Ingrese un código">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPrice" class="col-sm-3 control-label">Precio</label>
+            <div class="col-sm-9">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                <input type="number" [formControl]="form.controls['price']" class="form-control" id="inputPrice" placeholder="Ingrese un Precio">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPresentation" class="col-sm-3 control-label">Presentación</label>
+            <div class="col-sm-9">
+              <select [formControl]="form.controls['presentation']" id="inputPresentation" class="form-control">
+                <option [value]="2">2</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputVariety" class="col-sm-3 control-label">Variedad</label>
+            <div class="col-sm-9">
+              <select [formControl]="form.controls['variety_id']" id="inputVariety" class="form-control">
+                <option *ngFor="let variety of varieties" [value]="variety.id">{{ variety.name }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+          <a [routerLink]="['/']" class="btn btn-default">Cancelar</a>
+          <button [disabled]="!form.valid || sending || disableButtom" type="submit" class="btn btn-primary pull-right">
+            <i *ngIf="sending" class="fa fa-spin fa-refresh"></i>
+            Guardar
+          </button>
+        </div>
+        <!-- /.box-footer -->
+      </form>
+    </div>
+  </div>
+</div>
+

@@ -3,15 +3,38 @@
     <div class="box">
       <div class="box-header with-border">
         <h3 class="box-title">Lista Actual</h3>
+        <a [routerLink]="['/salesitems/new']" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Agregar item</a>
       </div>
       <!-- /.box-header -->
       <div class="box-body">
-        <button (click)="ping()">Ping!</button>
-          <ngx-datatable
-            class="bootstrap"
-            [rows]="rows"
-            [columns]="columns">
-          </ngx-datatable>
+        <ngx-datatable
+          class="bootstrap"
+          [headerHeight]="50"
+          [footerHeight]="50"
+          [rows]="data"
+          [columnMode]="'force'"
+          [rowHeight]="'auto'"
+          [externalPaging]="true"
+          [count]="page.totalElements"
+          [offset]="page.pageNumber - 1"
+          [limit]="page.size"
+          (page)='listItems($event)'
+          [loadingIndicator]="loadingIndicator">
+          <ngx-datatable-column prop="name" name="Nombre" [width]="300"></ngx-datatable-column>
+          <ngx-datatable-column prop="code" name="Código"></ngx-datatable-column>
+          <ngx-datatable-column prop="price" name="Precio"></ngx-datatable-column>
+          <ngx-datatable-column prop="presentation" name="Presentación"></ngx-datatable-column>
+          <ngx-datatable-column prop="variety.name" name="Variedad"></ngx-datatable-column>
+          <ngx-datatable-column name="Opciones" sortable="false" prop="id">
+            <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+                {{column.name}}
+            </ng-template>
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+              <a [routerLink]="['/salesitems', value, 'edit']" class="btn btn-default btn-xs"><i class="fa fa-pencil"></i> Editar</a>
+              <button type="button" (click)="deleteItem(value)" class="btn btn-default btn-xs"><i class="fa fa-times"></i> Eliminar</button>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
       </div>
       <!-- /.box-body -->
     </div>

@@ -6,7 +6,6 @@
 * -----------
 */
 
-/* skin-black navbar */
 .lockscreen,
 .skin-blue {
   font-family: 'Lato', sans-serif;
@@ -65,6 +64,14 @@
   //Create the sidebar skin
   .skin-light-sidebar(#fff);
 }
-
-
 @boxed-layout-bg-image-path: "/assets/img/boxed-bg.jpg";
+
+.ngx-datatable.bootstrap .datatable-footer .datatable-pager li:not(.disabled) a{
+  color: #424242;
+}
+.ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li:not(.disabled).active a, .ngx-datatable.bootstrap .datatable-footer .datatable-pager ul li:not(.disabled):hover a {
+  color: #ededed;
+}
+.ngx-datatable .datatable-footer .datatable-pager .pager li a {
+  border: 0;
+}
