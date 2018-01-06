@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StarterContentComponent } from './starter-content.component';
+import { ControlSidebarComponent } from './control-sidebar.component';
 
-describe('StarterContentComponent', () => {
-  let component: StarterContentComponent;
-  let fixture: ComponentFixture<StarterContentComponent>;
+describe('ControlSidebarComponent', () => {
+  let component: ControlSidebarComponent;
+  let fixture: ComponentFixture<ControlSidebarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StarterContentComponent ]
+      declarations: [ ControlSidebarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StarterContentComponent);
+    fixture = TestBed.createComponent(ControlSidebarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

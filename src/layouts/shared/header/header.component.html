@@ -1,9 +1,9 @@
 <header class="main-header">
 
   <!-- Logo -->
-  <a href="#" class="logo">
+  <a [routerLink]="['/']" class="logo">
     <!-- mini logo for sidebar mini 50x50 pixels -->
-    <span class="logo-mini"><b>A</b>LT</span>
+    <span class="logo-mini"><i class="em em-seedling"></i></span>
     <!-- logo for regular state and mobile devices -->
     <span class="logo-lg">farm <i class="em em-seedling"></i></span>
   </a>
@@ -81,7 +81,7 @@
                 <a class="btn btn-default btn-flat">Perfil</a>
               </div>
               <div class="pull-right">
-                <a href="#" class="btn btn-default btn-flat">Cerrar sesión</a>
+                <a (click)="onLogout()" class="btn btn-default btn-flat">Cerrar sesión</a>
               </div>
             </li>
           </ul>

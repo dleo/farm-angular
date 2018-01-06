@@ -2,29 +2,41 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AppComponent } from './app.component';
-import { StarterComponent } from './starter/starter.component';
-import { StarterHeaderComponent } from './starter/starter-header/starter-header.component';
-import { StarterLeftSideComponent } from './starter/starter-left-side/starter-left-side.component';
-import { StarterContentComponent } from './starter/starter-content/starter-content.component';
-import { StarterFooterComponent } from './starter/starter-footer/starter-footer.component';
-import { StarterControlSidebarComponent } from './starter/starter-control-sidebar/starter-control-sidebar.component';
+import { SalesitemsComponent } from './salesitems/salesitems.component';
+import { LayoutsModule } from '@layouts/layouts.module';
+import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from '../services/auth-guard.service';
+import { TokenInterceptor } from '../services/token.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StarterComponent,
-    StarterHeaderComponent,
-    StarterLeftSideComponent,
-    StarterContentComponent,
-    StarterFooterComponent,
-    StarterControlSidebarComponent
+    SalesitemsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LayoutsModule,
+    NgxDatatableModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
