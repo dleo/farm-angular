@@ -7,19 +7,22 @@
       <form class="form-horizontal" [formGroup]="form" (ngSubmit)="onSave()" novalidate>
         <!-- /.box-header -->
         <div class="box-body">
-          <div class="form-group">
+          <div *ngIf="loadingIndicator" class="preview">
+            <div class="loader"></div>
+          </div>
+          <div *ngIf="!loadingIndicator" class="form-group">
             <label for="inputName" class="col-sm-3 control-label">Nombre</label>
             <div class="col-sm-9">
               <input type="text" [formControl]="form.controls['name']" class="form-control" id="inputName" placeholder="Ingrese un nombre">
             </div>
           </div>
-          <div class="form-group">
+          <div *ngIf="!loadingIndicator" class="form-group">
             <label for="inputCode" class="col-sm-3 control-label">Código</label>
             <div class="col-sm-9">
               <input type="text" [formControl]="form.controls['code']" class="form-control" id="inputCode" placeholder="Ingrese un código">
             </div>
           </div>
-          <div class="form-group">
+          <div *ngIf="!loadingIndicator" class="form-group">
             <label for="inputPrice" class="col-sm-3 control-label">Precio</label>
             <div class="col-sm-9">
               <div class="input-group">
@@ -28,15 +31,15 @@
               </div>
             </div>
           </div>
-          <div class="form-group">
+          <div *ngIf="!loadingIndicator" class="form-group">
             <label for="inputPresentation" class="col-sm-3 control-label">Presentación</label>
             <div class="col-sm-9">
               <select [formControl]="form.controls['presentation']" id="inputPresentation" class="form-control">
-                <option [value]="2">2</option>
+                <option *ngFor="let presentation of presentations" [value]="presentation.id">{{ presentation.name }}</option>
               </select>
             </div>
           </div>
-          <div class="form-group">
+          <div *ngIf="!loadingIndicator" class="form-group">
             <label for="inputVariety" class="col-sm-3 control-label">Variedad</label>
             <div class="col-sm-9">
               <select [formControl]="form.controls['variety_id']" id="inputVariety" class="form-control">

@@ -14,7 +14,7 @@
       <!-- /.lockscreen-image -->
 
       <!-- lockscreen credentials (contains the form) -->
-      <form [formGroup]="form" (ngSubmit)="onLogin($event)" class="lockscreen-credentials" novalidate>
+      <form [formGroup]="form" (ngSubmit)="onLogin()" class="lockscreen-credentials" novalidate>
         <div class="input-group">
           <input type="password" class="form-control" [formControl]="form.controls['password']" placeholder="contraseña">
           <div class="input-group-btn">

@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
+  public presentations: Array<any>;
+  public loadingIndicator: boolean;
   public title: string;
   public id: string;
   public form: FormGroup;
@@ -42,9 +44,13 @@ export class FormComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadingIndicator = true;
+    this.presentations = [{ id: '0', name: 'Caja' }, { id: '1', name: 'KG'}, { id: '2', name: 'Otros'}];
     this.listVarieties().add(() => {
       if(this.id) {
         this.getCurrentItem();
+      } else {
+        this.loadingIndicator = false;
       }
     })
   }
@@ -52,6 +58,7 @@ export class FormComponent implements OnInit {
   getCurrentItem() {
     this.salesitemsService.show(this.id).subscribe(
       (response: any) => {
+        this.loadingIndicator = false;
         this.form.patchValue({
           id: response.id,
           name: response.name,
@@ -68,7 +75,7 @@ export class FormComponent implements OnInit {
         (response: any) => {
           this.varieties = response.data;
           if(!this.id) {
-            this.form.patchValue({ variety_id: 113, presentation: 2})
+            this.form.patchValue({ variety_id: 113, presentation: '2'});
           }
         }
       )
