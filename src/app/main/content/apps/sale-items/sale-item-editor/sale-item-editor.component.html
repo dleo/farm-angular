@@ -1,0 +1,131 @@
+<!-- Content Wrapper. Contains page content -->
+<div id="sale-items-editor-component" class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <p *ngFor="let alert of alerts">
+    <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+  </p>
+  <section class="content-header">
+    <h1>
+      Sale Items
+      <small>editor</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li><a href="#"><i class="fa fa-table"></i> Sale Items</a></li>
+      <li class="active">Editor</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+    <div class="row">
+      <div class="col-xs-12">
+        <!-- Horizontal Form -->
+        <div class="box box-info">
+          <div class="box-header with-border">
+            <h3 class="box-title">{{title}}</h3>
+          </div>
+          <!-- /.box-header -->
+          <!-- form start -->
+          <form #itemForm="ngForm" novalidate (ngSubmit)="save()" *ngIf="!loading" class="form-horizontal">
+            <div class="box-body">
+              <div class="form-group">
+                <label for="input1" class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-10 col-lg-9">
+                  <input id="input1" class="form-control" required
+                         placeholder="Name"
+                         name="name" #name="ngModel"
+                         [(ngModel)]="model.name">
+                  <small [hidden]="name.valid || (name.pristine && !itemForm.submitted)" class="text-danger">
+                    Name is required.
+                  </small>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="input2" class="col-sm-2 control-label">Code</label>
+
+                <div class="col-sm-10 col-lg-9">
+                  <input id="input2" class="form-control" required
+                         placeholder="Code"
+                         name="code" #code="ngModel"
+                        [(ngModel)]="model.code">
+                  <small [hidden]="code.valid || (code.pristine && !itemForm.submitted)" class="text-danger">
+                    Name is required.
+                  </small>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="input3" class="col-sm-2 control-label">Price 1</label>
+
+                <div class="col-sm-10 col-lg-9">
+                  <input id="input3" class="form-control" type="number"
+                         placeholder="Price" farmMaxValue="999999.999999" required
+                         name="price" #price="ngModel"
+                         [(ngModel)]="model.price">
+                  <small [hidden]="price.valid || (price.pristine && !itemForm.submitted)" class="text-danger">
+                    Price is too much.
+                  </small>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="input4" class="col-sm-2 control-label">Presentation</label>
+
+                <div class="col-sm-10 col-lg-9">
+                  <input id="input4" class="form-control" required
+                         placeholder="Presentation"
+                         name="presentation" #presentation="ngModel"
+                         [(ngModel)]="model.presentation">
+                  <small [hidden]="presentation.valid || (presentation.pristine && !itemForm.submitted)" class="text-danger">
+                    Presentation is required
+                  </small>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Variety</label>
+
+                <div class="col-sm-10 col-lg-9">
+                  <select type="number" class="form-control" id="variety" required
+                          name="variety" #variety="ngModel"
+                          [(ngModel)]="model.variety_id">
+                    <option *ngFor="let variety of varieties" [value]="variety.id">{{variety.name}}</option>
+                  </select>
+                  <small [hidden]="variety.valid || (variety.pristine && !itemForm.submitted)" class="text-danger">
+                    Variety is required
+                  </small>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Notes</label>
+                <div class="col-sm-10 col-lg-9">
+                  <textarea class="form-control" rows="3"
+                            placeholder="Notes..."
+                            name="notes" #notes="ngModel"
+                            [(ngModel)]="model.notes">
+                  </textarea>
+                </div>
+              </div>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+              <button class="btn btn-default" (click)="cancel()">Cancel</button>
+              <button type="submit" class="btn btn-success pull-right" [disabled]="!itemForm.form.valid">Save</button>
+            </div>
+            <!-- /.box-footer -->
+          </form>
+          <div *ngIf="loading" class="row mb-30">
+            <div class="col-sm-2 col-sm-offset-5">
+              <span class="info-box-icon bg-blue-active"><i class="fa fa-shopping-basket"></i></span>
+            </div>
+          </div>
+        </div>
+        <!-- /.box -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
