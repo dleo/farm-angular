@@ -1,0 +1,15 @@
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class AuthService {
+    private authToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjY4NzExOGE2ZDNkYjY2MzYwY2U0NDljMzY0MmI4OWNiNTA5ZGI2ZWZhNWU2OTdiZTlmOWQ5ZjkzMzcwMTA1M2M5NjMwMmYxODE0NWFhNjdmIn0.eyJhdWQiOiIxIiwianRpIjoiNjg3MTE4YTZkM2RiNjYzNjBjZTQ0OWMzNjQyYjg5Y2I1MDlkYjZlZmE1ZTY5N2JlOWY5ZDlmOTMzNzAxMDUzYzk2MzAyZjE4MTQ1YWE2N2YiLCJpYXQiOjE1MTU3ODQxMjUsIm5iZiI6MTUxNTc4NDEyNSwiZXhwIjoxNTQ3MzIwMTI1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.ouusuHrKsqh0geo4Bf5_vAlBFvKLeUq0ciUHfgLxSSQDEltKXTqtTjS2egH4x1p1ReNXHtJwQdBu0BZnTFGo1sZeyP0xM9tdzsRNshtZ4c5_tGeBPqgxIglGOKY2SaV4_FSGghbYSG0fDNoOPwBD6YyEeOnIMdx19RcgxSa4l_aVh3sJYQ1l2gUW3sanpXb1Y8ztwGSZxuVXnvAX60NSW_Bhh4lom76HEYGoWlOOnWGj1LCLSAtapoksSN74xIBeU5c3Gcrf5PWA_a9Yo46EzXkDjr25mU0IhobCoUH-Dx_2bxr_nm9D1ZbTOIKp9YKBJ7mfL1gFTryKxSXRQUXL1YpEX-06_TS9uIcsiyR_OccNm9agPCuEdzT_rkF4ENYu-O2tmGXfMWZms9AOt8shZQ56Etklmzl3kRe7NXGJWvndvRRHn6QX90hh8WqTbH3UaAP3947NTb-eMeAe3-tn8WmZnRiumgCe6cMA41i_d7PCNXBioHlmYFhSVU65ZM4kvUe_x7yWl00wBe6ICI7qe475mI7mk8V8kI07N2tYmih2pcr0ZNoiS8S-m-sXRfD59c21ne8Dk5NuYXtBJ13r0mmkzIAjCNhefgi5yp9LJcQUoLpEgAMe89-mZ3O9WRjvYns5B0l7izdQteYzewkDfDRKfOsDEjIOQB2kgpRfBdQ';
+    private apiBaseUrl = 'https://stormy-coast-32294.herokuapp.com/api';
+
+    get token(): string {
+        return this.authToken;
+    }
+
+    get apiUrl(): string {
+        return this.apiBaseUrl;
+    }
+}

@@ -21,12 +21,12 @@
       "styles": [
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "assets/AdminLTE/dist/css/AdminLTE.min.css",
-        "assets/AdminLTE/dist/css/skins/skin-blue-light.min.css",
+        "assets/AdminLTE/dist/css/skins/_all-skins.min.css",
+        "assets/AdminLTE/dist/css/skins/skin-green.min.css",
+        "../node_modules/font-awesome/css/font-awesome.css",
         "styles.css"
       ],
       "scripts": [
-         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
-         "assets/AdminLTE/dist/js/adminlte.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
