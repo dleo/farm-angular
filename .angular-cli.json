@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "f-a"
+    "name": "farm-angular"
   },
   "apps": [
     {
@@ -19,9 +19,15 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "assets/AdminLTE/dist/css/AdminLTE.min.css",
+        "assets/AdminLTE/dist/css/skins/skin-blue-light.min.css",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+         "../node_modules/bootstrap/dist/js/bootstrap.min.js",
+         "assets/AdminLTE/dist/js/adminlte.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
