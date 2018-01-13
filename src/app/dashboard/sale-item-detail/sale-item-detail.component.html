@@ -21,36 +21,44 @@
 
   <!-- Default box -->
   <div class="box">    
-      <form role="form">
-        <div class="box-body">
+    <div class="box-body">
+        <form role="form">
           <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+            <label for="item-name">Nombre</label>
+            <input [(ngModel)]="saleItem.name" type="text" class="form-control" name="item-name" placeholder="Nombre del ítem">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-          </div>          
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-          </div>
-          <!--<div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <label for="item-code">Código</label>
+            <input [(ngModel)]="saleItem.code" type="text" class="form-control" name="item-code" placeholder="Código del ítem">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-          </div-->
-        </div>
-        <!-- /.box-body -->
-      
-        <div class="box-footer">
-          <button type="submit" class="btn btn-primary">Crear Item</button>
-        </div>
-      </form>
-    <!-- /.box-body -->    
+            <label for="item-price">Precio</label>
+            <div class="input-group">            
+              <span class="input-group-addon">$</span>  
+              <input [(ngModel)]="saleItem.price" type="number" class="form-control" name="item-price" placeholder="Precio del ítem">
+            </div>            
+          </div>
+          <div class="form-group">
+            <label for="item-presentation">Presentación</label>
+            <select [(ngModel)]="saleItem.presentation" name="item-presentation" class="form-control">
+              <option value="">Seleccione la presentación del ítem</option>
+              <option [value]="presentation.id" *ngFor="let presentation of presentations">{{ presentation.name }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="item-variety">Variedad</label>
+            <select [(ngModel)]="saleItem.variety_id" name="item-variety" class="form-control">
+              <option value="0">Seleccione la variedad del ítem</option>
+              <option [value]="variety.id" *ngFor="let variety of varieties">{{ variety.name }}</option>
+            </select>
+          </div>
+        </form>
+    </div>
+    <!-- /.box-body -->
+    
+    <div class="box-footer">
+      <button type="submit" class="btn btn-primary" (click)="createItem()">Crear Item</button>
+    </div> 
   </div>
   <!-- /.box -->
 </section>
