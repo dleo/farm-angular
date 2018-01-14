@@ -1,15 +1,18 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
-  <h1>
+  <h1 *ngIf="mode === 'create'">
     Crear Item de Venta
+  </h1>
+  <h1 *ngIf="mode === 'edit'">
+    Modificar Item de Venta
   </h1>
   <ol class="breadcrumb">
     <li>
-      <a routerLink="/dashboard/sale-items">
+      <a routerLink="/">
         <i class="fa fa-dashboard"></i> Dashboard</a>
     </li>
     <li>
-      <a routerLink="/dashboard/sale-items">
+      <a routerLink="/dashboard/sale-items/list-items">
         <i class="fa fa-dashboard"></i> Items Ventas</a>
     </li>
     <li class="active">Crear Item de Venta</li>
@@ -99,7 +102,10 @@
     </div>
     <!-- /.box-body -->
     
-    <div class="box-footer">    
+    <div class="box-footer">   
+      <button type="submit" class="btn btn-default" (click)="goBack()">
+        Atrás
+      </button>
       <button type="submit" class="btn btn-primary" *ngIf="mode === 'create'"
               (click)="createItem()" [disabled]="!saleItemForm.form.valid">
         Crear Item

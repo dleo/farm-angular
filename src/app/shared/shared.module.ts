@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { AuthService } from '../core/services/auth.service';
-import { CommonService } from './services/common.service';
+import { HttpCommonService } from './services/http-common.service';
 
 @NgModule({
     imports: [
@@ -16,7 +16,7 @@ import { CommonService } from './services/common.service';
     ],
     providers: [
         AuthService,
-        CommonService
+        HttpCommonService
     ]
 })
 export class SharedModule {}

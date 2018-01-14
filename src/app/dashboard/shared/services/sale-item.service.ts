@@ -5,8 +5,8 @@ import { Response } from '@angular/http/src/static_response';
 import { Observable } from 'rxjs/Observable';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { AuthService } from '../../core/services/auth.service';
-import { CommonService } from './../../shared/services/common.service';
+import { AuthService } from '../../../core/services/auth.service';
+import { HttpCommonService } from './../../../shared/services/http-common.service';
 
 import { SaleItemModel } from './../models/sale-item.model';
 
@@ -15,17 +15,17 @@ export class SaleItemService {
     options: any;
     constructor(
         private http: Http,
-        private commonService: CommonService,
+        private httpCommonService: HttpCommonService,
         private auth: AuthService
     ) {
-        this.options = this.commonService.getHttpOptions();
+        this.options = this.httpCommonService.getHttpOptions();
     }
 
     getSaleItems(): Observable<SaleItemModel[]> {
         return this.http.get(`${this.auth.apiUrl}/saleitems`, this.options)
                         .pipe(
                             map((response: Response) => response.json().data as SaleItemModel[]),
-                            catchError(this.commonService.handleError('getSaleItems', []))
+                            catchError(this.httpCommonService.handleError('getSaleItems', []))
                         );
     }
 
@@ -33,7 +33,7 @@ export class SaleItemService {
         return this.http.get(`${this.auth.apiUrl}/saleitems/${saleItemId}`, this.options)
                         .pipe(
                             map((response: Response) => response.json() as SaleItemModel),
-                            catchError(this.commonService.handleError('getSaleItem'))
+                            catchError(this.httpCommonService.handleError('getSaleItem'))
                         );
     }
 
@@ -41,7 +41,7 @@ export class SaleItemService {
         return this.http.get(`${this.auth.apiUrl}/saleitems?page=${pageNumber}`, this.options)
                         .pipe(
                             map((response: Response) => response.json() as SaleItemModel[]),
-                            catchError(this.commonService.handleError('getSaleItemsPage', []))
+                            catchError(this.httpCommonService.handleError('getSaleItemsPage', []))
                         );
     }
 
@@ -49,11 +49,11 @@ export class SaleItemService {
         return this.http
                    .post(`${this.auth.apiUrl}/saleitems`,
                         JSON.stringify(saleItem),
-                        this.commonService.getHttpOptions()
+                        this.httpCommonService.getHttpOptions()
                     )
                     .pipe(
                         tap(response => { }),
-                        catchError(this.commonService.handleError('createSaleItem')
+                        catchError(this.httpCommonService.handleError('createSaleItem')
                     ));
     }
 
@@ -61,11 +61,11 @@ export class SaleItemService {
         return this.http
                    .put(`${this.auth.apiUrl}/saleitems/${saleItem.id}`,
                         JSON.stringify(saleItem),
-                        this.commonService.getHttpOptions()
+                        this.httpCommonService.getHttpOptions()
                     )
                     .pipe(
                         tap(response => { }),
-                        catchError(this.commonService.handleError('updateSaleItem')
+                        catchError(this.httpCommonService.handleError('updateSaleItem')
                     ));
     }
 }

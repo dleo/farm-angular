@@ -5,7 +5,7 @@
   </h1>
   <ol class="breadcrumb">
     <li>
-      <a routerLink="/dashboard/sale-items">
+      <a routerLink="/">
         <i class="fa fa-dashboard"></i> Dashboard</a>
     </li>
     <li class="active">Items Ventas</li>
@@ -18,7 +18,7 @@
   <!-- Default box -->
   <div class="box">    
     <div class="box-body">
-      <button class="btn btn-primary" (click)="goToItemCreation()">Nuevo Item</button>
+      <a class="btn btn-primary" routerLink="./../new-sale-item">Nuevo Item</a>
       <hr>
       <!-- datatable here -->
       <table #saleItemsTable id="saleItemsTable" class="table table-striped table-bordered table-hover no-footer" *ngIf="saleItems">
@@ -39,7 +39,7 @@
             <th>{{ saleItem.price }}</th>
             <th>{{ saleItem.presentation }}</th>
             <th>{{ saleItem.variety.name }}</th>
-            <th><a class="btn btn-info" routerLink="/dashboard/sale-item-detail/{{ saleItem.id }}">Cambiar</a></th>
+            <th><a class="btn btn-info" routerLink="/dashboard/sale-items/sale-item-detail/{{ saleItem.id }}">Cambiar</a></th>
           </tr>
         </tbody>
       </table>

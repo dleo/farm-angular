@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { SaleItemModel } from './../models/sale-item.model';
-import { SaleItemService } from '../services/sale-item.service';
+import { SaleItemModel } from './../shared/models/sale-item.model';
+import { SaleItemService } from '../shared/services/sale-item.service';
 
 declare var $;
 
@@ -17,7 +17,6 @@ export class SaleItemsComponent implements OnInit {
   saleItemsTable: any;
   tableObject: any;
   tableOptions: any;
-  el: ElementRef;
 
   saleItemsPage: any;
   pageNumbers = [];
@@ -86,10 +85,6 @@ export class SaleItemsComponent implements OnInit {
             this.tableObject.clear().rows.add(this.saleItems).draw();
           }
         );
-  }
-
-  goToItemCreation() {
-    this.router.navigate(['/dashboard/new-sale-item']);
   }
 
 }

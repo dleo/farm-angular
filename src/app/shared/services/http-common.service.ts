@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { AuthService } from './../../core/services/auth.service';
 
 @Injectable()
-export class CommonService {
+export class HttpCommonService {
     headers: Headers;
     reqOptions: RequestOptions;
     constructor(

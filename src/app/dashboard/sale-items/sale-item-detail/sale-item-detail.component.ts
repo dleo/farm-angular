@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
-import { PresentationService } from './../services/presentation.service';
-import { SaleItemService } from './../services/sale-item.service';
-import { VarietyService } from '../services/variety.service';
+import { PresentationService } from './../../shared/services/presentation.service';
+import { SaleItemService } from './../../shared/services/sale-item.service';
+import { VarietyService } from '../../shared/services/variety.service';
 
-import { PresentationModel } from '../models/presentation.model';
-import { SaleItemModel } from './../models/sale-item.model';
-import { VarietyModel } from '../models/variety.model';
+import { PresentationModel } from '../../shared/models/presentation.model';
+import { SaleItemModel } from './../../shared/models/sale-item.model';
+import { VarietyModel } from '../../shared/models/variety.model';
 
 @Component({
   selector: 'app-sale-item-detail',
@@ -27,7 +28,8 @@ export class SaleItemDetailComponent implements OnInit {
     private presentationService: PresentationService,
     private saleItemService: SaleItemService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -80,7 +82,7 @@ export class SaleItemDetailComponent implements OnInit {
         .createSaleItem(this.saleItem)
         .subscribe(
           res => {
-            this.router.navigate(['/dashboard/sale-items']);
+            this.router.navigate(['/dashboard/sale-items/list-items']);
           },
           err => {
             console.error(err);
@@ -94,12 +96,16 @@ export class SaleItemDetailComponent implements OnInit {
         .updateSaleItem(this.saleItem)
         .subscribe(
         res => {
-          this.router.navigate(['/dashboard/sale-items']);
+          this.router.navigate(['/dashboard/sale-items/list-items']);
         },
         err => {
           console.error(err);
         }
     );
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

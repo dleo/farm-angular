@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'dashboard/sale-items',
+        redirectTo: 'dashboard/sale-items/list-items',
         pathMatch: 'full'
     },
     {

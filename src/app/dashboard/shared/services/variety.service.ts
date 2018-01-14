@@ -5,8 +5,8 @@ import { Http, Headers, RequestOptionsArgs } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { catchError, map, tap } from 'rxjs/operators';
 
-import { AuthService } from '../../core/services/auth.service';
-import { CommonService } from '../../shared/services/common.service';
+import { AuthService } from '../../../core/services/auth.service';
+import { HttpCommonService } from '../../../shared/services/http-common.service';
 import { VarietyModel } from '../models/variety.model';
 
 @Injectable()
@@ -16,16 +16,16 @@ export class VarietyService {
     constructor(
         private http: Http,
         private auth: AuthService,
-        private commonService: CommonService
+        private httpCommonService: HttpCommonService
     ) {
-        this.options = this.commonService.getHttpOptions();
+        this.options = this.httpCommonService.getHttpOptions();
     }
 
     getVarieties(): Observable<VarietyModel[]> {
         return this.http.get(`${this.auth.apiUrl}/varieties`, this.options)
                    .pipe(
                         map((response: Response) => response.json().data as VarietyModel[]),
-                        catchError(this.commonService.handleError('getVarieties', [])
+                        catchError(this.httpCommonService.handleError('getVarieties', [])
                     ));
     }
 
