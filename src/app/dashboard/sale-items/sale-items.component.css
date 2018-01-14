@@ -5,3 +5,13 @@ tbody th {
 a {
     cursor: pointer;
 }
+
+.page-is-changing {
+    opacity: 0.8;
+}
+
+.loading-gif {
+    position: absolute;
+    margin-right: auto;
+    margin-left: auto;
+}

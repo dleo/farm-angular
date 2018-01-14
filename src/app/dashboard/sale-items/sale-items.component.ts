@@ -20,6 +20,7 @@ export class SaleItemsComponent implements OnInit {
 
   saleItemsPage: any;
   pageNumbers = [];
+  pageChanging = false;
 
   constructor(private router: Router,
               private saleItemService: SaleItemService) {}
@@ -65,6 +66,8 @@ export class SaleItemsComponent implements OnInit {
   goToPage(direction: number) {
     let newPage;
 
+    this.pageChanging = true;
+    this.saleItems = undefined;
     if (direction > 0) {
       newPage = direction;
     } else {
@@ -83,6 +86,7 @@ export class SaleItemsComponent implements OnInit {
             this.saleItems = saleItemsPage.data;
 
             this.tableObject.clear().rows.add(this.saleItems).draw();
+            this.pageChanging = false;
           }
         );
   }
