@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { PresentationService } from './../services/presentation.service';
 import { SaleItemService } from './../services/sale-item.service';
@@ -19,17 +19,39 @@ export class SaleItemDetailComponent implements OnInit {
   presentations: PresentationModel[];
   saleItem: SaleItemModel;
   selectedVariety = '';
+
+  mode = 'create';
+
   constructor(
     private varietyService: VarietyService,
     private presentationService: PresentationService,
     private saleItemService: SaleItemService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     this.getVarieties();
     this.getPresentations();
-    this.saleItem = new SaleItemModel('', '', '', undefined, '', -1);
+
+    const id = +this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.mode = 'edit';
+      this.getSaleItem(id);
+    } else {
+      this.saleItem = new SaleItemModel('', '', '', undefined, '', -1);
+    }
+  }
+
+  getSaleItem(id: number) {
+    this.saleItemService
+        .getSaleItemById(id)
+        .subscribe(
+        saleItem => {
+          this.saleItem = saleItem;
+          this.selectedVariety = saleItem.variety.id.toString();
+        }
+      );
   }
 
   getVarieties() {
@@ -58,13 +80,26 @@ export class SaleItemDetailComponent implements OnInit {
         .createSaleItem(this.saleItem)
         .subscribe(
           res => {
-            // console.log('Sale Item created!');
             this.router.navigate(['/dashboard/sale-items']);
           },
           err => {
             console.error(err);
           }
         );
+  }
+
+  updateItem() {
+    this.saleItem.variety_id = +this.selectedVariety;
+    this.saleItemService
+        .updateSaleItem(this.saleItem)
+        .subscribe(
+        res => {
+          this.router.navigate(['/dashboard/sale-items']);
+        },
+        err => {
+          console.error(err);
+        }
+    );
   }
 
 }

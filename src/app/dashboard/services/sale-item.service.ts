@@ -29,16 +29,12 @@ export class SaleItemService {
                         );
     }
 
-    createSaleItem(saleItem: SaleItemModel) {
-        return this.http
-                   .post(`${this.auth.apiUrl}/saleitems`,
-                        JSON.stringify(saleItem),
-                        this.commonService.getHttpOptions()
-                    )
-                    .pipe(
-                        tap(response => { console.log('todo ok'); } ),
-                        catchError(this.commonService.handleError('createSaleItem')
-                    ));
+    getSaleItemById(saleItemId: number): Observable<SaleItemModel> {
+        return this.http.get(`${this.auth.apiUrl}/saleitems/${saleItemId}`, this.options)
+                        .pipe(
+                            map((response: Response) => response.json() as SaleItemModel),
+                            catchError(this.commonService.handleError('getSaleItem'))
+                        );
     }
 
     getSaleItemsPage(pageNumber: number): Observable<any> {
@@ -49,4 +45,27 @@ export class SaleItemService {
                         );
     }
 
+    createSaleItem(saleItem: SaleItemModel) {
+        return this.http
+                   .post(`${this.auth.apiUrl}/saleitems`,
+                        JSON.stringify(saleItem),
+                        this.commonService.getHttpOptions()
+                    )
+                    .pipe(
+                        tap(response => { }),
+                        catchError(this.commonService.handleError('createSaleItem')
+                    ));
+    }
+
+    updateSaleItem(saleItem: SaleItemModel) {
+        return this.http
+                   .put(`${this.auth.apiUrl}/saleitems/${saleItem.id}`,
+                        JSON.stringify(saleItem),
+                        this.commonService.getHttpOptions()
+                    )
+                    .pipe(
+                        tap(response => { }),
+                        catchError(this.commonService.handleError('updateSaleItem')
+                    ));
+    }
 }

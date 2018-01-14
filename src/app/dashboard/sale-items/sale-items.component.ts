@@ -46,13 +46,12 @@ export class SaleItemsComponent implements OnInit {
               this.tableObject.destroy();
             }
 
-            console.log(saleItems);
             this.tableOptions = {
               data: saleItems,
               dom: 'rt',
               select: true,
-              pagingType: 'full_numbers',
-              paging: true
+              paging: true,
+              sortable: true
             };
 
             this.saleItemsTable = $(document.getElementById('saleItemsTable'));

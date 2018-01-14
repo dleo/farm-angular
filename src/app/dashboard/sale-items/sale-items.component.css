@@ -1,3 +1,7 @@
 tbody th {
     font-weight: normal;
 }
+
+a {
+    cursor: pointer;
+}
