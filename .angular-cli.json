@@ -24,9 +24,14 @@
         "assets/AdminLTE/dist/css/skins/_all-skins.min.css",
         "assets/AdminLTE/dist/css/skins/skin-green.min.css",
         "../node_modules/font-awesome/css/font-awesome.css",
+        "../node_modules/datatables.net-bs/css/dataTables.bootstrap.css",
         "styles.css"
       ],
       "scripts": [
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "../node_modules/datatables.net/js/jquery.dataTables.js",
+        "../node_modules/datatables.net-bs/js/dataTables.bootstrap.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
