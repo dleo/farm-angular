@@ -21,6 +21,7 @@ export class SaleItemsComponent implements OnInit {
   saleItemsPage: any;
   pageNumbers = [];
   pageChanging = false;
+  searchValue = '';
 
   constructor(private router: Router,
               private saleItemService: SaleItemService) {}

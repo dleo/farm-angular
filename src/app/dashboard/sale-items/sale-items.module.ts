@@ -1,3 +1,4 @@
+import { FilterSaleItemsPipe } from './pipes/filter-sale-items.pipe';
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from './../../shared/shared.module';
@@ -18,7 +19,8 @@ import { SaleItemsComponent } from './sale-items.component';
     ],
     declarations: [
         SaleItemsComponent,
-        SaleItemDetailComponent
+        SaleItemDetailComponent,
+        FilterSaleItemsPipe
     ],
     providers: [
         PresentationService,
