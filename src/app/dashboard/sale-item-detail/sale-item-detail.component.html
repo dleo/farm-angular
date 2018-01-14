@@ -22,42 +22,88 @@
   <!-- Default box -->
   <div class="box">    
     <div class="box-body">
-        <form role="form">
-          <div class="form-group">
+        <form #saleItemForm="ngForm">
+          <div class="form-group" [class.has-success]="name.valid" [class.has-error]="name.invalid">
             <label for="item-name">Nombre</label>
-            <input [(ngModel)]="saleItem.name" type="text" class="form-control" name="item-name" placeholder="Nombre del ítem">
+            <input [(ngModel)]="saleItem.name" type="text" 
+                   class="form-control" name="item-name" #name="ngModel"
+                   placeholder="Nombre del ítem" required>
+                  <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                    <div *ngIf="name.errors.required" class="help-block">
+                      Debe indicar un nombre para el ítem.
+                    </div>
+                  </div>
           </div>
-          <div class="form-group">
+
+          <div class="form-group" [class.has-success]="code.valid" [class.has-error]="code.invalid">
             <label for="item-code">Código</label>
-            <input [(ngModel)]="saleItem.code" type="text" class="form-control" name="item-code" placeholder="Código del ítem">
+            <input [(ngModel)]="saleItem.code" type="text"
+                   class="form-control" name="item-code" #code="ngModel"
+                   placeholder="Código del ítem" required>
+                  <div *ngIf="code.invalid && (code.dirty || code.touched)">
+                    <div *ngIf="code.errors.required" class="help-block">
+                      Debe indicar el código del ítem.
+                    </div>
+                  </div>
           </div>
-          <div class="form-group">
+          
+          <div class="form-group" [class.has-success]="price.valid" [class.has-error]="price.invalid">
             <label for="item-price">Precio</label>
             <div class="input-group">            
               <span class="input-group-addon">$</span>  
-              <input [(ngModel)]="saleItem.price" type="number" class="form-control" name="item-price" placeholder="Precio del ítem">
-            </div>            
+              <input [(ngModel)]="saleItem.price" type="number" minimumPrice="1"
+                     class="form-control" name="item-price" #price="ngModel"
+                     placeholder="Precio del ítem" required min="1">              
+            </div>  
+            <div *ngIf="price.invalid && (price.dirty || price.touched)">
+              <div *ngIf="price.errors.required" class="help-block">
+                Debe indicar el precio del ítem.
+              </div>
+              <div *ngIf="price.errors.min" class="help-block">
+                El precio del ítem debe ser mayor a 0.
+              </div>
+            </div>
           </div>
-          <div class="form-group">
+          
+          <div class="form-group" [class.has-success]="presentation.valid" [class.has-error]="presentation.invalid">
             <label for="item-presentation">Presentación</label>
-            <select [(ngModel)]="saleItem.presentation" name="item-presentation" class="form-control">
+            <select [(ngModel)]="saleItem.presentation" name="item-presentation"
+                    class="form-control" required #presentation="ngModel">
               <option value="">Seleccione la presentación del ítem</option>
-              <option [value]="presentation.id" *ngFor="let presentation of presentations">{{ presentation.name }}</option>
+              <option [value]="presentation.id" *ngFor="let presentation of presentations">
+                {{ presentation.name }}
+              </option>
             </select>
+            <div *ngIf="presentation.invalid && (presentation.dirty || presentation.touched)">
+              <div *ngIf="presentation.errors.required" class="help-block">
+                Debe seleccionar una presentación para el ítem.
+              </div>
+            </div>
           </div>
-          <div class="form-group">
+          
+          <div class="form-group" [class.has-success]="variety.valid" [class.has-error]="variety.invalid">
             <label for="item-variety">Variedad</label>
-            <select [(ngModel)]="saleItem.variety_id" name="item-variety" class="form-control">
-              <option value="0">Seleccione la variedad del ítem</option>
+            <select [(ngModel)]="selectedVariety" name="item-variety"
+                    class="form-control" required #variety="ngModel">
+              <option value="">Seleccione la variedad del ítem</option>
               <option [value]="variety.id" *ngFor="let variety of varieties">{{ variety.name }}</option>
             </select>
+            <div *ngIf="variety.invalid && (variety.dirty || variety.touched)">
+              <div *ngIf="variety.errors.required" class="help-block">
+                Debe indicar la variedad del ítem.
+              </div>
+            </div>
           </div>
+        
         </form>
     </div>
     <!-- /.box-body -->
     
     <div class="box-footer">
-      <button type="submit" class="btn btn-primary" (click)="createItem()">Crear Item</button>
+      <button type="submit" class="btn btn-primary" 
+              (click)="createItem()" [disabled]="!saleItemForm.form.valid">
+        Crear Item
+      </button>
     </div> 
   </div>
   <!-- /.box -->

@@ -11,15 +11,20 @@ import { PresentationService } from './services/presentation.service';
 import { SaleItemService } from './services/sale-item.service';
 import { VarietyService } from './services/variety.service';
 
+import { MinimumValidatorDirective } from './directives/minimum-price.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
     imports: [
         SharedModule,
+        ReactiveFormsModule,
         DashboardRoutingModule
     ],
     declarations: [
         DashboardComponent,
         SaleItemsComponent,
-        SaleItemDetailComponent
+        SaleItemDetailComponent,
+        MinimumValidatorDirective
     ],
     providers: [
         SaleItemService,

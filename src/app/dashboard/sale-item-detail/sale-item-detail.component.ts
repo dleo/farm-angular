@@ -1,13 +1,13 @@
-import { SaleItemService } from './../services/sale-item.service';
-import { SaleItemModel } from './../models/sale-item.model';
 import { Component, OnInit } from '@angular/core';
-import { Response } from '@angular/http/src/static_response';
+import { Router } from '@angular/router';
 
 import { PresentationService } from './../services/presentation.service';
+import { SaleItemService } from './../services/sale-item.service';
 import { VarietyService } from '../services/variety.service';
 
-import { VarietyModel } from '../models/variety.model';
 import { PresentationModel } from '../models/presentation.model';
+import { SaleItemModel } from './../models/sale-item.model';
+import { VarietyModel } from '../models/variety.model';
 
 @Component({
   selector: 'app-sale-item-detail',
@@ -18,16 +18,18 @@ export class SaleItemDetailComponent implements OnInit {
   varieties: VarietyModel[];
   presentations: PresentationModel[];
   saleItem: SaleItemModel;
+  selectedVariety = '';
   constructor(
     private varietyService: VarietyService,
     private presentationService: PresentationService,
-    private saleItemService: SaleItemService
+    private saleItemService: SaleItemService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.getVarieties();
     this.getPresentations();
-    this.saleItem = new SaleItemModel('', '', '', 0, '', 0);
+    this.saleItem = new SaleItemModel('', '', '', undefined, '', -1);
   }
 
   getVarieties() {
@@ -51,11 +53,13 @@ export class SaleItemDetailComponent implements OnInit {
   }
 
   createItem() {
+    this.saleItem.variety_id = +this.selectedVariety;
     this.saleItemService
         .createSaleItem(this.saleItem)
         .subscribe(
           res => {
-            console.log('Sale Item created!');
+            // console.log('Sale Item created!');
+            this.router.navigate(['/dashboard/sale-items']);
           },
           err => {
             console.error(err);
