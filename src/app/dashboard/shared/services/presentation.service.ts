@@ -17,6 +17,10 @@ const presentations: PresentationModel[] = [
     {
         id: 2,
         name: 'Unidad'
+    },
+    {
+        id: 3,
+        name: 'Caja'
     }
 ];
 

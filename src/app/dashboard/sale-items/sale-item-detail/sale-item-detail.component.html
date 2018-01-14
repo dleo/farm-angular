@@ -100,7 +100,13 @@
               </div>
             </div>
           </div>
-        
+
+          <div class="form-group" [class.has-success]="notes.valid">
+            <label for="item-notes">Notas</label>
+            <input [(ngModel)]="saleItem.notes" type="text" 
+                   class="form-control" name="item-notes" 
+                   #notes="ngModel" placeholder="Notas del ítem (opcional)">
+          </div>        
         </form>
     </div>
     <!-- /.box-body -->
