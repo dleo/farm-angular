@@ -1,0 +1,105 @@
+<div class="wrapper">
+  <header class="main-header">
+    <a class="logo">
+      <span class="logo-mini">
+        <b>F</b>A
+      </span>
+      <span class="logo-lg">
+        <b>FARM</b>Angular
+      </span>
+    </a>
+    <nav class="navbar navbar-static-top">
+      <a class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle Navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <div class="navbar-custom-menu"></div>
+    </nav>
+  </header>
+
+  <aside class="main-sidebar">
+    <section class="sidebar">
+      
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="treeview">
+          <a routerLink="/">
+            <i class="fa fa-dashboard"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a >
+            <i class="fa fa-list"></i>
+            <span>Items Ventas</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li>
+              <a routerLink="/dashboard/sale-items/list-items">
+                <i class="fa fa-circle-o"></i> Items</a>
+            </li>
+            <li>
+              <a routerLink="/dashboard/sale-items/new-sale-item">
+                <i class="fa fa-circle-o"></i> Crear Item</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </aside>
+
+  <div class="content-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 2.4.0
+    </div>
+    <strong>Copyright &copy; 2014-2016
+      <a href="https://adminlte.io" target="_blank">Almsaeed Studio</a>.</strong> All rights reserved.
+  </footer>
+</div>
+<!--
+<div class="wrapper">
+    
+
+    <aside class="main-sidebar">
+      <section class="sidebar">
+        <ul class="sidebar-menu" data-widget="tree">
+          <li class="header">
+            MAIN NAVIGATION
+          </li>
+          <li class="treeview">
+            <a routerLink="/dashboard">
+              <i class="fa fa-dashboard"></i>
+              <span>Dashboard</span>
+          </li>
+          <li class="treeview">
+            <a routerLink="/sale-items">
+              <i class="fa fa-list"></i>
+              <span>Sale Items</span>
+            </a>            
+          </li>
+        </ul>
+      </section>
+      
+    </aside>
+    
+    <div class="content-wrapper">
+      <router-outlet></router-outlet>
+    </div>    
+
+    <footer class="main-footer">
+      <div class="pull-right hidden-xs">
+        <b>Version</b> 2.4.0
+      </div>
+      <strong>Copyright &copy; 2014-2016
+        <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights reserved.
+    </footer>
+</div>-->
